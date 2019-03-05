@@ -4,7 +4,7 @@
  */
 
 import {AppRegistry} from 'react-native';
-import {AppStackNavigatorContainer} from './js/navigators/AppNavigator';
+import {AppNavigatorContainer} from './js/navigators/AppNavigator';
 import {name as appName} from './app.json';
 
-AppRegistry.registerComponent(appName, () => AppStackNavigatorContainer);
+AppRegistry.registerComponent(appName, () => AppNavigatorContainer);
