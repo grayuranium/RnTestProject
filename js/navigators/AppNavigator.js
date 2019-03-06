@@ -12,6 +12,7 @@ import Page4 from '../../js/page/Page4'
 import Login from '../../js/page/Login'
 import FlatlistDemo from "../page/FlatlistDemo";
 import SwipeableFlatlistDemo from "../page/SwipeableFlatlistDemo";
+import SectionListDemo from "../page/SectionListDemo";
 
 //用户登录页面
 const AuthNavigator = createStackNavigator({
@@ -210,6 +211,9 @@ const AppStackNavigator = createStackNavigator({
     },
     SwipeableFlatlistDemo:{
         screen:SwipeableFlatlistDemo,
+    },
+    SectionListDemo:{
+        screen:SectionListDemo,
     },
 },{
     initialRouteName:'HomePage',

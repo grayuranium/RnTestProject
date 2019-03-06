@@ -36,6 +36,9 @@ export default class HomePage extends Component<Props> {
                 <Button title={'跳转到SwipeableFlatlistDemo'} onPress={()=>{
                     navigation.navigate('SwipeableFlatlistDemo');
                 }}/>
+                <Button title={'跳转到SectionListDemo'} onPress={()=>{
+                    navigation.navigate('SectionListDemo');
+                }}/>
             </View>
         );
     }
