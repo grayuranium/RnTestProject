@@ -10,6 +10,8 @@ import Page2 from '../../js/page/Page2'
 import Page3 from '../../js/page/Page3'
 import Page4 from '../../js/page/Page4'
 import Login from '../../js/page/Login'
+import FlatlistDemo from "../page/FlatlistDemo";
+import SwipeableFlatlistDemo from "../page/SwipeableFlatlistDemo";
 
 //用户登录页面
 const AuthNavigator = createStackNavigator({
@@ -202,6 +204,12 @@ const AppStackNavigator = createStackNavigator({
         navigationOptions:{
             title: 'this is drawNavigator',
         },
+    },
+    FlatlistDemo:{
+        screen:FlatlistDemo,
+    },
+    SwipeableFlatlistDemo:{
+        screen:SwipeableFlatlistDemo,
     },
 },{
     initialRouteName:'HomePage',

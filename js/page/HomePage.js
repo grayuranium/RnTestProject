@@ -30,6 +30,12 @@ export default class HomePage extends Component<Props> {
                 <Button title={'跳转到DrawNavigator'} onPress={()=>{
                     navigation.navigate('Draw');
                 }}/>
+                <Button title={'跳转到FlatlistDemo'} onPress={()=>{
+                    navigation.navigate('FlatlistDemo');
+                }}/>
+                <Button title={'跳转到SwipeableFlatlistDemo'} onPress={()=>{
+                    navigation.navigate('SwipeableFlatlistDemo');
+                }}/>
             </View>
         );
     }
