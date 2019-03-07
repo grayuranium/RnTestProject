@@ -1,13 +1,16 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import React, {Component} from 'react'
+import {Platform, StyleSheet, Text, View} from 'react-native'
+import {Provider} from 'react-redux'
+import store from './store/store'
+import {AppWithNavigationState} from './navigators/AppNavigator'
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-
-      </View>
+        <Provider store={store}>
+          <AppWithNavigationState/>
+        </Provider>
     );
   }
 }

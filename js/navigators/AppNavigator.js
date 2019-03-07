@@ -4,6 +4,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import React from 'react'
 import {Button,Platform,ScrollView} from 'react-native'
+import {connect} from 'react-redux'
+import {createReactNavigationReduxMiddleware,createReduxContainer} from 'react-navigation-redux-helpers'
 import HomePage from '../../js/page/HomePage'
 import Page1 from '../../js/page/Page1'
 import Page2 from '../../js/page/Page2'
@@ -220,7 +222,7 @@ const AppStackNavigator = createStackNavigator({
 })
 
 //不可回退导航栏
-const MyAppNavigator = createSwitchNavigator({
+export const MyAppNavigator = createSwitchNavigator({
     Auth:{
         screen:AuthNavigator,
     },
@@ -231,4 +233,16 @@ const MyAppNavigator = createSwitchNavigator({
     initialRouteName:'Auth',
 })
 
-export const AppNavigatorContainer = createAppContainer(MyAppNavigator);
+//中间件，用于让react-navigation识别state中的导航的action的，注意，Middleware的创建一定要在包装前
+export const middleware = createReactNavigationReduxMiddleware(
+    state => state.nav,
+);
+
+const AppNavigatorContainer = createReduxContainer(MyAppNavigator);
+
+//将导航的action放入全局state中
+const mapStateToProps = (state) => ({
+    state: state.nav,
+});
+
+export const AppWithNavigationState = connect(mapStateToProps)(AppNavigatorContainer);
