@@ -72,8 +72,11 @@ class HomePage extends Component<Props> {
                 <Button title={'跳转到SectionListDemo'} onPress={()=>{
                     navigation.navigate('SectionListDemo');
                 }}/>
-                <Button title={'改变text颜色'} onPress={()=>{
+                <Button title={'改变text的theme内容'} onPress={()=>{
                     this.props.onThemeChange('#096');
+                }}/>
+                <Button title={'跳转到FetchDemo'} onPress={()=>{
+                    navigation.navigate('FetchDemo');
                 }}/>
             </View>
         );
