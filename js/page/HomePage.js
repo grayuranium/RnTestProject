@@ -1,17 +1,50 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View,Button} from 'react-native';
+import {connect} from 'react-redux';
+import {BackHandler, StyleSheet, Text, View,Button} from 'react-native';
+import {NavigationActions} from 'react-navigation';
+import actions from '../actions';
 
 type Props = {};
-export default class HomePage extends Component<Props> {
+class HomePage extends Component<Props> {
+
+    componentDidMount(): void {
+        BackHandler.addEventListener('hardwareBackPress',this.onBackPress);
+    }
+
+    componentWillUnmount(): void {
+        BackHandler.removeEventListener('hardwareBackPress',this.onBackPress);
+    }
+
+    /**
+     * 处理物理按键事件
+     * @returns {boolean}
+     */
+    onBackPress = ()=>{
+        const {nav} = this.props;
+        if (nav.routes[1].index===0){
+            return false;
+        }
+        this.props.navigation.dispatch(NavigationActions.back());
+        return true;
+    }
+
+    constructor(props){
+        super(props);
+        this.props = {
+            theme:'#0000ff',
+        };
+    }
+
     static navigationOptions = {
         title: 'Home',
         headerBackTitle:'返回',
     }
+
     render() {
         const {navigation} = this.props;
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>welcome to HomePage!</Text>
+                <Text style={styles.welcome}>welcome to HomePage!{this.props.theme}</Text>
                 <Button title={'跳转到page1'} onPress={()=>{
                     navigation.navigate('Page1');
                 }}/>
@@ -39,10 +72,24 @@ export default class HomePage extends Component<Props> {
                 <Button title={'跳转到SectionListDemo'} onPress={()=>{
                     navigation.navigate('SectionListDemo');
                 }}/>
+                <Button title={'改变text颜色'} onPress={()=>{
+                    this.props.onThemeChange('#096');
+                }}/>
             </View>
         );
     }
 }
+
+const mapStateToProps = state =>({
+        theme:state.theme.theme,
+        nav:state.nav,
+})
+
+const mapDispatchToProps = dispatch =>({
+    onThemeChange:theme=>dispatch(actions.changeTheme(theme))
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
 
 const styles = StyleSheet.create({
     container: {
