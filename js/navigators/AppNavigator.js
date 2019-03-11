@@ -16,6 +16,7 @@ import FlatlistDemo from "../page/FlatlistDemo";
 import SwipeableFlatlistDemo from "../page/SwipeableFlatlistDemo";
 import SectionListDemo from "../page/SectionListDemo";
 import FetchDemo from "../page/FetchDemo";
+import AsyncStorageDemo from "../page/AsyncStorageDemo";
 
 //用户登录页面
 const AuthNavigator = createStackNavigator({
@@ -220,6 +221,9 @@ const AppStackNavigator = createStackNavigator({
     },
     FetchDemo:{
         screen:FetchDemo,
+    },
+    AsyncStorageDemo:{
+        screen:AsyncStorageDemo,
     },
 },{
     initialRouteName:'HomePage',
