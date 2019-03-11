@@ -81,6 +81,9 @@ class HomePage extends Component<Props> {
                 <Button title={'跳转到AsyncStorageDemo'} onPress={()=>{
                     navigation.navigate('AsyncStorageDemo');
                 }}/>
+                <Button title={'跳转到DataStoreDemo'} onPress={()=>{
+                    navigation.navigate('DataStoreDemo');
+                }}/>
             </View>
         );
     }
